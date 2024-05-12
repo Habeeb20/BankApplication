@@ -42,6 +42,7 @@ namespace Menu.Account
                   "11. First City Monument Bank (FCMB)\n" +
                   "12. Wema Bank\n");
                 int option;
+                
                 while (!int.TryParse(Console.ReadLine(), out option))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -69,7 +70,7 @@ namespace Menu.Account
         {
             var account = accountService.GetAccountBallance(id);
             if (account is not null)
-                Console.WriteLine($"Your account ballace in {account.BankName.ToString()} is {account.Balance}");
+                Console.WriteLine($"Your account balance in {account.BankName.ToString()} is {account.Balance}");
             else
                 Console.WriteLine("Something went wrong, You may need to login again");
             return;

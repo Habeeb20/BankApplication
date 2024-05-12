@@ -27,3 +27,4 @@ C:\Users\Waliyu Habeeb\Desktop\ProjectOOP\bin\Debug\net8.0\FinApp.dll
 C:\Users\Waliyu Habeeb\Desktop\ProjectOOP\bin\Debug\net8.0\FinApp.pdb
 C:\Users\Waliyu Habeeb\Desktop\ProjectOOP\obj\Debug\net8.0\FinApp.genruntimeconfig.cache
 C:\Users\Waliyu Habeeb\Desktop\ProjectOOP\obj\Debug\net8.0\ref\FinApp.dll
+C:\Users\Waliyu Habeeb\Desktop\ProjectOOP\obj\Debug\net8.0\FinApp.sourcelink.json

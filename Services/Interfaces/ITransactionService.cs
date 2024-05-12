@@ -10,5 +10,6 @@ namespace ProjectOOP.Services.Interfaces
     public interface ITransactionService
     {
           (TransactionDto, string) Create(CreateTransactionRequest request, Guid customerId);
+        IEnumerable<object> GetAll(Guid customerId);
     }
 }

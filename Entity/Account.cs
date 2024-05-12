@@ -6,7 +6,7 @@ namespace Entity
     {
         public Guid CustomerUserId = default!;
         public string Name;
-        public decimal Balance = 0.00M;
+        public decimal Balance = 2000;
         public int Pin;
         public string AccountNumber;
         public BankName BankName;

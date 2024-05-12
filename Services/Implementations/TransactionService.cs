@@ -4,6 +4,7 @@ using Entity;
 using ProjectOOP.Services.Interfaces;
 using ProjectOOP.Dto.Query;
 using DTO.Command;
+
 namespace Services.Implementations
 {
    public class TransactionService : ITransactionService
@@ -50,6 +51,34 @@ namespace Services.Implementations
                 }, "Transaction successful");
             }
             return (null, "Invalid Pin");
+        }
+
+        public List<TransactionDto> GetAll(Guid customerId)
+        {
+            var account = _accountRepository.GetByCustomerId(customerId);
+            if(account is not null)
+            {
+                var transactions = _transactionRepository.GetAll(account.Id);
+                return 
+                    transactions.Select(x => new TransactionDto{
+                        Amount = x.Amount,
+                        TransactionDate = x.TransactionDate,
+                        TransactionType = x.TransactionType,
+                        ReceiverAcctNum = x.ReceiverAcctNum,
+
+
+                }).ToList();
+             
+                
+             
+
+            }
+               return [];
+        }
+
+        IEnumerable<object> ITransactionService.GetAll(Guid customerId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

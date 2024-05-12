@@ -52,6 +52,7 @@ namespace Menu.Transaction
             {
                 case 1:
                     transactionRequest.Amount = 100;
+                    _transactionService.Create(transactionRequest, customerId);
                     break;
                 case 2:
                     transactionRequest.Amount = 200;
@@ -102,10 +103,38 @@ namespace Menu.Transaction
                 default:
                     break;
             }
-            _transactionService.Create(transactionRequest, customerId);
+            var transaction =  _transactionService.Create(transactionRequest, customerId);
+            System.Console.WriteLine(transaction.Item2);
         }
-        public void CheckTransactionHistory()
+
+        public void CreateTransferTransaction(Guid customerId)
         {
+            System.Console.WriteLine("Amount:  ");
+            decimal amount = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Reciever Account");
+            string recieverAcctNum = Console.ReadLine();
+            System.Console.WriteLine("your pin is required");
+        }
+        public void CheckTransactionHistory(Guid customerId)
+        {
+            var transaction = _transactionService.GetAll(customerId);
+            Console.WriteLine(".................");
+            if(transaction is not null)
+            {
+                foreach(var Transaction in transaction)
+                {
+                    Console.WriteLine($"\nAmount: {transaction.Amount}");
+                    Console.WriteLine($"\nTransaction Type: {transaction.TransactionType.ToString()}");
+                    Console.WriteLine($"\nTransactionDate: {transaction.TransactionDate}");
+                    Console.WriteLine($"\nDescription: {transaction.Description}");
+                    Console.WriteLine($"\nReceiver: {transaction.Receiver}");
+
+
+                }
+
+         
+            }
+            Console.WriteLine("...............");
 
         }
 

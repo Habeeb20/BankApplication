@@ -65,7 +65,7 @@ namespace Menu.Customer
                     _transactionMenu.CreateTransaction(id);
                     break;
                 case 4:
-                    _transactionMenu.CheckTransactionHistory();
+                    _transactionMenu.CheckTransactionHistory(id);
                     break;
                 default:
                     break;
