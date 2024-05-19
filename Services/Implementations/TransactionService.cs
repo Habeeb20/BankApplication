@@ -42,6 +42,9 @@ namespace Services.Implementations
                 };
                 _transactionRepository.Add(transaction);
                 account.Balance -= transaction.Amount;
+                System.Console.WriteLine(account.Balance);
+                System.Console.WriteLine(transaction.Amount);
+                
                 return (new TransactionDto
                 {
                     Amount = transaction.Amount,
@@ -65,6 +68,7 @@ namespace Services.Implementations
                         TransactionDate = x.TransactionDate,
                         TransactionType = x.TransactionType,
                         ReceiverAcctNum = x.ReceiverAcctNum,
+                        Description = x.Description
 
 
                 }).ToList();
@@ -76,9 +80,6 @@ namespace Services.Implementations
                return [];
         }
 
-        IEnumerable<object> ITransactionService.GetAll(Guid customerId)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

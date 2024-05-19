@@ -3,6 +3,7 @@ using Entity;
 using ProjectOOP.Services.Interfaces;
 using Services.Implementations;
 using Services.Interfaces;
+using System.Collections.Generic;
 
 namespace Menu.Transaction
 {
@@ -117,17 +118,17 @@ namespace Menu.Transaction
         }
         public void CheckTransactionHistory(Guid customerId)
         {
-            var transaction = _transactionService.GetAll(customerId);
+            var transactions = _transactionService.GetAll(customerId);
             Console.WriteLine(".................");
-            if(transaction is not null)
+            if(transactions is not null)
             {
-                foreach(var Transaction in transaction)
+                foreach(var transaction in transactions)
                 {
                     Console.WriteLine($"\nAmount: {transaction.Amount}");
                     Console.WriteLine($"\nTransaction Type: {transaction.TransactionType.ToString()}");
                     Console.WriteLine($"\nTransactionDate: {transaction.TransactionDate}");
                     Console.WriteLine($"\nDescription: {transaction.Description}");
-                    Console.WriteLine($"\nReceiver: {transaction.Receiver}");
+                    Console.WriteLine($"\nReceiver: {transaction.ReceiverAcctNum}");
 
 
                 }
