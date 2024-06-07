@@ -14,7 +14,11 @@ namespace Repository.Implementations
         {
             if (customer is not null)
             {
-                Customers_DB.Add(customer);
+                var customerString = customer.ToString();
+                using StreamWriter writer = new(ProjectOOP.ApplicationConstants.FileConstants.CUSTOMERFILE, true);
+                writer.WriteLine(customerString);
+                writer.Flush();
+                writer.Close();
                 return true;
             }
             return false;
@@ -63,6 +67,27 @@ namespace Repository.Implementations
                 return true;
             }
             return false;
+        }
+
+        public static void LoadInitialData()
+        {
+            var absPaths = Path.Combine(Directory.GetCurrentDirectory(),ProjectOOP.ApplicationConstants.FileConstants.CUSTOMERFILE);
+            using StreamReader reader = new(absPaths);
+            var customerData = reader.ReadLine();
+            while (customerData != null)
+            {
+                try
+                {
+                    var customerToAdd=Customer.FormatLine(customerData);
+                    Customers_DB.Add(customerToAdd);
+                }
+                catch (Exception e)
+                {
+                    
+                    Console.WriteLine(e.Message);
+                }
+                customerData = reader.ReadLine();
+            }
         }
     }
 }

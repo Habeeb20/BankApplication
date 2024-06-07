@@ -1,0 +1,4 @@
+Entity.Account
+928bc54f-03f3-4347-9c40-9a8579ba4c98, habeeb waliyu, 8166489562,1234, Wema
+928bc54f-03f3-4347-9c40-9a8579ba4c98, habeeb waliyu, 8166489562,1234, Fidelity
+928bc54f-03f3-4347-9c40-9a8579ba4c98, habeeb waliyu, 8166489562,1212, FCMB

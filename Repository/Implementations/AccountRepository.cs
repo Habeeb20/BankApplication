@@ -14,7 +14,11 @@ namespace Repository.Implementations
         {
             if (account is not null)
             {
-                Accounts_DB.Add(account);
+                var accountString = account.ToString();
+                using StreamWriter writer = new StreamWriter(ProjectOOP.ApplicationConstants.FileConstants.ACCOUNTFILE, true);
+                writer.WriteLine(accountString);
+                writer.Flush();
+                writer.Close();
                 return true;
             }
             return false;
@@ -64,6 +68,27 @@ namespace Repository.Implementations
         public object GetByPin(object pin)
         {
             throw new NotImplementedException();
+        }
+
+        public static void LoadInitialAcctData()
+        {
+            var acctPath = Path.Combine(Directory.GetCurrentDirectory(), ProjectOOP.ApplicationConstants.FileConstants.ACCOUNTFILE);
+            using StreamReader reader = new(acctPath);
+            var acct = reader.ReadLine();
+            while(acct != null)
+            {
+                try
+                {
+                    var acctData= Account.FormatLine(acct);
+                    Accounts_DB.Add(acctData);
+                }
+                catch (System.Exception e)
+                {
+                    
+                    Console.WriteLine(e.Message);
+                }
+                acct = reader.ReadLine();
+            }
         }
     }
 }
